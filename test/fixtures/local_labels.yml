@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  label_id: 1
+  index: 1
+  color: MyString
+
+two:
+  project_id: 1
+  label_id: 1
+  index: 1
+  color: MyString

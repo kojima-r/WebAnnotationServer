@@ -1,0 +1,60 @@
+ 2005  git clone git://github.com/sstephenson/rbenv.git .rbenv
+ 2006  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc 
+ 2007  source .bashrc 
+ 2008  echo 'eval "$(rbenv init -)"' >> ~/.bashrc 
+ 2009  vim .bash
+ 2010  vim .bashrc 
+ 2011  rbenv
+ 2012  rbenv install -l
+ 2013  rbenv -l
+ 2014  rbenv
+ 2015  rbenv list
+ 2016  rbenv install -l
+ 2017  rbenv install 
+ 2018  git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+ 2019  rbenv install -l
+ 2020  rbenv install 2.2.2
+ 2021  sudo apt-get install -y libssl-dev libreadline-dev
+ 2022  rbenv install 2.2.2
+ 2023  ls
+ 2024  rbenv grobal 2.2.2
+ 2025  rbenv global 2.2.2
+ 2026  rbenv versions
+ 2027  ruby -v
+ 2028  which ruby
+ 2029  source .bashrc 
+ 2030  which ruby
+ 2031  ruby -vf
+ 2032  ruby -v
+ 2033  which gem
+ 2034  gem install rails --no-ri --no-rdoc
+ 2035  ls
+ 2036  cd rails_test/
+ 2037  ls
+ 2038  rails new test05
+ 2039  sudo apt-get install ruby-sqlite3 
+ 2040  ls
+ 2041  cd test05/
+ 2042  ls
+ 2043  gem install
+ 2044  bundle install
+ 2045  sudo apt-get install libsqlite3-dev
+ 2046  bundle install
+ 2047  ls
+ 2048  vim Gemfile
+ 2049  bundle update
+ 2050  rails g uploader Image
+ 2051  rails g migration add_image_to_product image:string
+ 2052  rake db:migrate
+ 2053  vim db/migrate/20160121063913_add_image_to_product.rb
+ 2054  rake db:migrate
+ 2055  rm db/migrate/20160121063913_add_image_to_product.rb
+ 2056  rails g scaffold Product name:string price:integer
+ 2057  rails g migration add_image_to_product image:string
+ 2058  rake db:migrate
+ 2059  ls
+ 2060  vim public/uploads/product/
+ 2061  ls public/uploads/product/image/
+ 2062  ls public/uploads/product/image/2/test.wav 
+ 2063  ls
+ 2064  history > log.txt

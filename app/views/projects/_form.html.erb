@@ -1,0 +1,76 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :tf %><br>
+    <%= f.text_field :tf %>
+  </div>
+  Localization
+  <div class="field">
+    <%= f.label :loc_src_num %><br>
+    <%= f.number_field :loc_src_num %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :loc_thresh %><br>
+    <%= f.number_field :loc_thresh %>
+  </div>
+
+  <div class="field">
+    <%= f.label :loc_lowest_freq %><br>
+    <%= f.number_field :loc_lowest_freq %>
+  </div>
+  Separation
+  <div class="field">
+    <%= f.label :sep_pause %><br>
+    <%= f.number_field :sep_pause %>
+  </div>
+  <div class="field">
+    <%= f.label :sep_lowest_freq %><br>
+    <%= f.number_field :sep_lowest_freq %>
+  </div>
+  <div class="field">
+    <%= f.label :sep_min_interval %><br>
+    <%= f.number_field :sep_min_interval %>
+  </div>
+  Sound
+  <div class="field">
+    <% if @project.wav? %>
+	  <div class="thumbnail">
+			<audio src="<%= @project.wav.url %>" controls/>
+      </div>
+    <% end %><br>
+    <%= f.label :wav %><br>
+    <%= f.file_field :wav %>
+    <%= f.hidden_field :wav_cache %>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @project.persisted? && @project.wav? %>
+      <label>
+        <%= f.check_box :remove_wav %>
+        削除
+      </label>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

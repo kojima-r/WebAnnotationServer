@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @project.username %>
+</p>
+
+<p>
+  <strong>Sound:</strong>
+  <% if @project.wav? %>
+    <div class="thumbnail">
+      <audio src="<%= @project.wav.url %>" controls/>
+    </div>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

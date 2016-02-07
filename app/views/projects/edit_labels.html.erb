@@ -1,0 +1,84 @@
+<script>
+$(function(){
+	//	
+	$('form[name=add_form]').submit(function(){
+		$.post($(this).attr('action'), $('form[name=add_data]').serialize(), function(json) {
+			console.log(json);
+			location.reload(true);
+		}, 'json');
+		return false;
+	});
+	//	
+	$('form[name=delete_form]').submit(function(){
+		$.post($(this).attr('action'), $('form[name=delete_data]').serialize(), function(json) {
+			console.log(json);
+			location.reload(true);
+		}, 'json');
+		return false;
+	});
+
+});
+</script>
+<h1>Editing labels</h1>
+<p>
+Project: <%= @project.name %>
+</p>
+<p>
+<strong>Sound:</strong>
+  <% if @project.wav? %>
+    <div class="thumbnail">
+      <audio src="<%= @project.wav.url %>" controls/>
+    </div>
+  <% end %>
+
+</p>
+<p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Registered labels</th>
+      <th></th>
+      <th>All labels</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+		<td>
+			<%= form_tag("",:name => "delete_data") do %>
+			<select name="delete_selector" size="12">
+			<% @project_labels.each do |label| %>
+			<option value="<%= label[:id] %> "><%= label[:name] %></option>
+			<% end %>
+			</select>
+			<% end %>
+			<p>  
+			<%= form_tag("/projects/"+@project.id.to_s+"/update_labels",:action => 'post',:multipart => true,:name => "delete_form") do %>
+			<p><input type="submit" value="Delete"></p>
+			<% end %> 
+			</p>
+		</td>
+		<td>
+			<p> ← ← 
+			<%= form_tag("/projects/"+@project.id.to_s+"/update_labels",:action => 'post',:multipart => true,:name => "add_form") do %>
+			<p><input type="submit" value="Add"></p>
+			<% end %> 
+		</td>
+		<td>
+			<%= form_tag("",:name => "add_data") do %>
+			<select name="add_selector" size="12">
+			<% @labels.each do |label| %>
+			<option value="<%= label[:id] %> "><%= label[:name] %></option>
+			<% end %>
+			</select>
+			<% end %> 
+		</td>
+      </tr>
+  </tbody>
+</table>
+
+<p>
+<%= link_to 'New label', "/labels/new",:target=>["_blank"]  %>
+</p>
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>
